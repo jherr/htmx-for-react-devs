@@ -1,0 +1,8 @@
+---
+import PagedMovies from '../components/PagedMovies.astro';
+import Layout from '../components/Layout.astro';
+---
+
+<Layout>
+  <PagedMovies page={Astro.url.searchParams.get('page')!} />
+</Layout>

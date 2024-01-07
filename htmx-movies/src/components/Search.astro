@@ -1,0 +1,17 @@
+---
+import MovieCards from './MovieCards.astro';
+
+const response = await fetch(
+  `https://api.themoviedb.org/3/search/movie?query=${
+    encodeURIComponent(Astro.props.query)
+  }&include_adult=false&language=en-US&page=1&api_key=${
+    process.env.TMDB_API_KEY
+  }`
+);
+
+const data = await response.json();
+
+export const partial = true;
+---
+
+<MovieCards movies={data.results} />

@@ -1,0 +1,21 @@
+---
+import MovieCards from '../components/MovieCards.astro';
+import Layout from '../components/Layout.astro';
+
+const favoriteCookie = Astro.cookies.get("favorites");
+const favorites = (favoriteCookie?.json() as number[]) || [];
+
+const movies = await Promise.all(
+  favorites.map(async (id) => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${process.env.TMDB_API_KEY}`
+    );
+    return await res.json();
+  })
+);
+---
+
+<Layout>
+  <h2 class="font-bold mb-3 text-2xl">Your Favorites</h2>
+  <MovieCards movies={movies} />
+</Layout>

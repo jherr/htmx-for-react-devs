@@ -1,0 +1,21 @@
+---
+let count = 0;
+try {
+  const data = await Astro.request.formData();
+  count = +(data.get("count") || "0") + 1;
+} catch {
+}
+---
+{count > 0 && (<div id="anotherCounter" hx-swap-oob="true">
+  {count}
+</div>)}
+
+<form id="counter" class="mt-3" hx-post="/partials/counter">
+  <input type="hidden" name="count" value={count} />
+  <button
+    type="submit"
+    class="bg-blue-900 text-white px-3 py-2 rounded-full"
+  >
+    Increment - {count}
+ </button>
+</form>

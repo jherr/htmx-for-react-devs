@@ -1,0 +1,19 @@
+---
+import users from '../components/users';
+import UserList from '../components/UserList.astro';
+
+const search = (Astro.url.searchParams.get('search') || '').toLocaleLowerCase();
+
+const foundUsers = users.filter(u =>
+  u.job.toLocaleLowerCase().includes(search) ||
+  u.email.toLocaleLowerCase().includes(search) ||
+  u.first.toLocaleLowerCase().includes(search) ||
+  u.last.toLocaleLowerCase().includes(search)
+).slice(0, 10);
+
+export const partial = true;
+---
+<div class="mb-5">
+  Searching for '{search}'
+</div>
+<UserList users={foundUsers} />

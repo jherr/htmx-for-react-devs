@@ -1,0 +1,32 @@
+---
+import MovieCards from './MovieCards.astro';
+
+const page = +(Astro.props.page || 1);
+
+const response = await fetch(
+  `https://api.themoviedb.org/3/movie/popular?include_adult=false&language=en-US&page=${
+    page
+  }&api_key=${
+    process.env.TMDB_API_KEY
+  }`
+);
+
+const data = await response.json();
+---
+
+<div id="paged-results" hx-boost>
+  <div class="flex justify-end pr-5 py-5">
+    <div class="flex gap-1 text-xl font-bold">
+      {new Array(3).fill(0).map((_, i) => (
+        <a
+          href={`?page=${i + 1}`}
+          hx-get={`/partials/paged-movies/?page=${i + 1}`}
+          hx-target="#paged-results"
+          hx-push-url={`/?page=${i + 1}`}
+          class={`${i + 1 === page ? 'bg-indigo-800 text-white' : ''} px-4 py-2 border border-gray-300 rounded hover:bg-indigo-200`}
+        >{i + 1}</a>
+      ))}
+    </div>  
+  </div>
+  <MovieCards movies={data.results} />
+</div>

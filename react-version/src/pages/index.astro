@@ -1,0 +1,16 @@
+---
+import Users from "./components/Users";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body class="max-w-3xl text-white bg-black text-3xl mt-5 mx-auto">
+		<Users client:load />
+	</body>
+</html>

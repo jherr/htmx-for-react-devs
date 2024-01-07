@@ -1,0 +1,12 @@
+---
+import users from '../components/users';
+import UserList from '../components/UserList.astro';
+
+export const partial = true;
+
+const page = +(Astro.url.searchParams.get('page') || 1);
+---
+<div class="italic mb-5">
+  Users: Page {page}
+</div>
+<UserList users={users.slice((page - 1) * 10, page * 10)} />

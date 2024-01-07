@@ -1,0 +1,25 @@
+---
+import FavoritesCount from "./FavoritesCount.astro";
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Movies!</title>
+	</head>
+	<body class="bg-black max-w-6xl mx-auto text-white px-5 md:px-0" hx-boost>
+		<header class="flex justify-between items-center p-4 bg-indigo-950 text-white rounded-b-2xl shadow-xl shadow-blue-600 mb-6">
+			<h1 class="text-2xl flex">
+				<a href="/" class="font-bold">Movies!</a>
+				<div class="mx-5">|</div>
+				<a href="/search">Search</a>
+			</h1>
+			<div id="favorites-count">
+				<FavoritesCount />
+			</div>
+		</header>
+    <slot />
+	</body>
+</html>

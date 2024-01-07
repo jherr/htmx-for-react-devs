@@ -1,0 +1,6 @@
+---
+import PagedMoviesList from '../../components/PagedMovies.astro';
+
+export const partial = true;
+---
+<PagedMoviesList page={Astro.url.searchParams.get('page')!} />

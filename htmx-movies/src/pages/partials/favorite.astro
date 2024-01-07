@@ -1,0 +1,23 @@
+---
+import FavoriteButton from '../../components/FavoriteButton.astro';
+import FavoritesCount from '../../components/FavoritesCount.astro';
+
+const data = await Astro.request.formData();
+const movieId = +(data.get("movieId") || "0");
+
+const favoriteCookie = Astro.cookies.get("favorites");
+const favorites = (favoriteCookie?.json() as number[]) || [];
+if(favorites.includes(movieId)) {
+  Astro.cookies.set("favorites", JSON.stringify(favorites.filter(id => id !== movieId)));
+} else {
+  Astro.cookies.set("favorites", JSON.stringify([...favorites, movieId]));
+}
+
+export const partial = true;
+---
+
+<div id="favorites-count" hx-swap-oob="true">
+  <FavoritesCount />
+</div>
+
+<FavoriteButton movieId={movieId} />

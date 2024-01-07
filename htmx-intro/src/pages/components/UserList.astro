@@ -1,0 +1,22 @@
+<table width="100%" class="text-sm">
+  <thead>
+    <tr>
+      <th>First</th>
+      <th>Last</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Job</th>
+    </tr>  
+  </thead>
+  <tbody>
+    {Astro.props.users.map((user) => (
+      <tr>
+        <td>{user.first}</td>
+        <td>{user.last}</td>
+        <td>{user.email}</td>
+        <td>{user.phone}</td>
+        <td>{user.job}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

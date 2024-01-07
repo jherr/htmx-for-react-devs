@@ -1,0 +1,27 @@
+{
+  "name": "htmx-version",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "@astrojs/node": "^7.0.4",
+    "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/mdi": "^1.1.64",
+    "astro": "^4.0.9",
+    "astro-htmx": "^1.0.5",
+    "astro-icon": "^1.0.2",
+    "htmx.org": "^1.9.10",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6"
+  }
+}
